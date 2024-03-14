@@ -3,16 +3,19 @@ package net.ledestudio.simplevoicechatwrapper;
 import de.maxhenkel.voicechat.api.BukkitVoicechatService;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.jetbrains.annotations.Nullable;
 
 public final class SimpleVoiceChatWrapper extends JavaPlugin {
 
     public static final String PLUGIN_ID = "simple_voice_chat_wrapper";
 
+    private SimpleVoiceChatWrapperPlugin voicePlugin;
+
     @Override
     public void onEnable() {
         BukkitVoicechatService service = getServer().getServicesManager().load(BukkitVoicechatService.class);
         if (service != null) {
-            SimpleVoiceChatWrapperPlugin voicePlugin = new SimpleVoiceChatWrapperPlugin();
+            voicePlugin = new SimpleVoiceChatWrapperPlugin();
             service.registerPlugin(voicePlugin);
             Bukkit.getLogger().warning("Successfully registered voice chat broadcast plugin");
         }
@@ -23,6 +26,9 @@ public final class SimpleVoiceChatWrapper extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        if (voicePlugin != null) {
+            getServer().getServicesManager().unregister(voicePlugin);
+            Bukkit.getLogger().info("Successfully unregistered voice chat broadcast plugin");
+        }
     }
 }
