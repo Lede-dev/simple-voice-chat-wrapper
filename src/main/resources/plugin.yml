@@ -1,0 +1,5 @@
+name: SimpleVoiceChatWrapper
+version: '${version}'
+main: net.ledestudio.simplevoicechatwrapper.SimpleVoiceChatWrapper
+api-version: '1.20'
+authors: [Lede]
