@@ -14,7 +14,7 @@ public class SimpleVoiceChatWrapperPlugin implements VoicechatPlugin {
 
     @Override
     public void initialize(VoicechatApi api) {
-
+        new VoiceChatInitializeEvent(api).callEvent();
     }
 
     @Override

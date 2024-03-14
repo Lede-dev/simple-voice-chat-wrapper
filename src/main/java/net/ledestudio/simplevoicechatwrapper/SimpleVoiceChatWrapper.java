@@ -3,7 +3,6 @@ package net.ledestudio.simplevoicechatwrapper;
 import de.maxhenkel.voicechat.api.BukkitVoicechatService;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.jetbrains.annotations.Nullable;
 
 public final class SimpleVoiceChatWrapper extends JavaPlugin {
 
